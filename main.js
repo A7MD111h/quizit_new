@@ -106,11 +106,11 @@ var questions = [];
     {
         numb: 7,
         question: "What is the purpose of the HTML <head> element?",
-        answer: "C.  It contains meta-information about the document.",
+        answer: "C. It contains document meta-information..",
         options: [
             "A.  It defines the header for a web page.",
             "B.  It defines a section of navigation links.",
-            "C.  It contains meta-information about the document.",
+            "C.  It contains document meta-information.",
             "D.  It displays the main content of the page."
         ]
     },
@@ -396,9 +396,11 @@ continueBtn.onclick = () => {
 
    showQuestions(questionCount);
    questionCounter(1);
+   startCountdown();
    headerScore();
-   startCountDown();
+
 }
+
 //hid start btn 
 function hide() {
   startBtn.style.display="none"
@@ -439,25 +441,30 @@ let questionNumb = 1;
 let userScore = 0;
 let countQt = 1;
 
-//the counter tat is gonna count the time for the test
-function startCountDown (){
+// once the quiz start it's gonna count down
+let  time = 3.50;
+let quizeTimeInMin = time *60 * 60;
+ let  quizeTime =quizeTimeInMin /60;
+
+let counting = document.getElementById('cuonter-down');
+
+function startCountdown (){
     let quizeTimer =setInterval(function(){
         if (quizeTime <= 0) {
-            clearInterval(quizeTimer);
-            showResultBox();
+        clearInterval(quizeTimer);
+        showResultBox();
         } else {
             quizeTime--;
             let sec=Math.floor(quizeTime %60);
             let min=Math.floor(quizeTime/60)%60;
             counting.innerHTML=` ${min}:${sec}`;
-        }
-    }, 1000)
+            }
+    },1000)
+
 }
-// startCountDown();
-let time = 5;
-let quizeTimeInMin = time * 60 * 60;
-let quizeTime = quizeTimeInMin / 60;
-let counting = document.getElementById('cuonter-down');
+
+//the counter tat is gonna count the time for the test
+
 
 // this button is gonna allow u to go to the next question if u did not chose any answer it's gonna be disabled at the end it's gonna call the show result
 const nextBtn = document.querySelector('.next-btn');
